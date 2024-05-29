@@ -51,7 +51,7 @@ string NhapKiTuCoSo(int ChieuDaiChuoi, int DiemX, int DiemY, int MauChu, int Chi
 			{
 				DieuKienKiTu=1;
 				ShowCur(0);
-				break;
+				return a;
 			} 
 			else if(b==BackSpace && a.length()>0)
 			{
@@ -104,6 +104,8 @@ string NhapKiTuCoSo(int ChieuDaiChuoi, int DiemX, int DiemY, int MauChu, int Chi
 					cout<<k;
 					a+=k;
 				}
+				else if(a.length()==0 && b==Space); 
+				else if(a.rfind(" ")==a.length()-1 && b==Space);
 				else
 				{	
 					cout<<b;
@@ -117,7 +119,7 @@ string NhapKiTuCoSo(int ChieuDaiChuoi, int DiemX, int DiemY, int MauChu, int Chi
 			{
 				DieuKienKiTu=1;
 				ShowCur(0);
-				break;
+				return a;
 			} 
 			else if(a.length()==ChieuDaiChuoi && b==13)
 			{
@@ -160,7 +162,7 @@ string NhapKiTuKhongSo(int ChieuDaiChuoi, int DiemX, int DiemY, int MauChu, int 
 			{
 				DieuKienKiTu=1;
 				ShowCur(0);
-				break;
+				return a;
 			} 
 			else if(b==BackSpace && a.length()>0)
 			{
@@ -168,9 +170,7 @@ string NhapKiTuKhongSo(int ChieuDaiChuoi, int DiemX, int DiemY, int MauChu, int 
 				cout<<" "; 
 				cout<<"\b";
 				a.pop_back();
-			} else if((b==Space && a[a.length()-1]==' ') || (b==Space && a.length()==0))
-			{
-			}
+			} 
 			else if(b==13)
 			{
 				if(a.length()==0)
@@ -214,7 +214,9 @@ string NhapKiTuKhongSo(int ChieuDaiChuoi, int DiemX, int DiemY, int MauChu, int 
 					k=tolower(b);
 					cout<<k;
 					a+=k;
-				}
+				} 
+				else if(a.length()==0 && b==Space); 
+				else if(a.rfind(" ")==a.length()-1 && b==Space);
 				else
 				{	
 					cout<<b;
@@ -228,7 +230,7 @@ string NhapKiTuKhongSo(int ChieuDaiChuoi, int DiemX, int DiemY, int MauChu, int 
 			{
 				DieuKienKiTu=1;
 				ShowCur(0);
-				break; 
+				return a; 
 			} 
 			else if(a.length()==ChieuDaiChuoi && b==13)
 			{
@@ -271,7 +273,7 @@ string NhapISBN(int DiemX, int DiemY, int MauChu, int ChieuDaiKhungThongBao){
 			{
 				DieuKienISBN=1;
 				ShowCur(0);
-				break; 
+				return Ma; 
 			} 
 			else if(b==13 && Ma.length()==0)
 			{
@@ -309,7 +311,7 @@ string NhapISBN(int DiemX, int DiemY, int MauChu, int ChieuDaiKhungThongBao){
 			{
 				DieuKienISBN=1;
 				ShowCur(0);
-				break; 
+				return Ma; 
 			} 
 			else if(Ma.length()==4 && b==13)
 			{
@@ -346,8 +348,9 @@ int NhapSo(int ChieuDaiChuoi, int DiemX, int DiemY, int MauChu, int ChieuDaiKhun
 			if(b==Esc)
 			{
 				DieuKienKiTu=1;
+				a=stoi(s);
 				ShowCur(0);
-				break;
+				return a;
 			} 
 			else if(b==BackSpace && s.length()>0)
 			{
@@ -392,8 +395,9 @@ int NhapSo(int ChieuDaiChuoi, int DiemX, int DiemY, int MauChu, int ChieuDaiKhun
 			if(b==Esc)
 			{
 				DieuKienKiTu=1;
+				a=stoi(s);
 				ShowCur(0);
-				break; 
+				return a; 
 			} 
 			else if(s.length()==ChieuDaiChuoi && b==13)
 			{
@@ -440,11 +444,14 @@ string CapNhatKiTuCoSo(string Goc, int ChieuDaiChuoi, int DiemX, int DiemY, int 
 				cout<<"\b";
 				a.pop_back();
 			}
+			else if((b==Space && a[a.length()-1]==' ') || (b==Space && a.length()==0))
+			{
+			} 
 			else if(b==Esc)
 			{
 				DieuKienKiTu=1;
 				ShowCur(0);
-				break;
+				return m;
 			}
 			else if(b==13)
 			{
@@ -510,6 +517,7 @@ string CapNhatKiTuCoSo(string Goc, int ChieuDaiChuoi, int DiemX, int DiemY, int 
 					cout<<k;
 					a+=k;
 				}
+				else if(a.length()==0 && Goc.length()==0 && b==Space); 
 				else
 				{	
 					cout<<b;
@@ -523,7 +531,7 @@ string CapNhatKiTuCoSo(string Goc, int ChieuDaiChuoi, int DiemX, int DiemY, int 
 			{
 				DieuKienKiTu=1;
 				ShowCur(0);
-				break;
+				return m;
 			} 
 			else if((a.length()+Goc.length())==ChieuDaiChuoi && b==13)
 			{
@@ -571,7 +579,7 @@ string CapNhatKiTuKhongSo(string Goc, int ChieuDaiChuoi, int DiemX, int DiemY, i
 			{
 				DieuKienKiTu=1;
 				ShowCur(0);
-				break;
+				return m;
 			} 
 			else if(b==BackSpace && a.length()==0 && Goc.length()>0)
 			{
@@ -586,8 +594,6 @@ string CapNhatKiTuKhongSo(string Goc, int ChieuDaiChuoi, int DiemX, int DiemY, i
 				cout<<" "; 
 				cout<<"\b";
 				a.pop_back();
-			}else if((b==Space && a[a.length()-1]==' ') || (b==Space && a.length()==0))
-			{
 			}
 			else if(b==13)
 			{
@@ -653,6 +659,7 @@ string CapNhatKiTuKhongSo(string Goc, int ChieuDaiChuoi, int DiemX, int DiemY, i
 					cout<<k;
 					a+=k;
 				}
+				else if(a.length()==0 && Goc.length()==0 && b==Space); 
 				else
 				{	
 					cout<<b;
@@ -666,7 +673,7 @@ string CapNhatKiTuKhongSo(string Goc, int ChieuDaiChuoi, int DiemX, int DiemY, i
 			{
 				DieuKienKiTu=1;
 				ShowCur(0);
-				break;
+				return m;
 			} 
 			else if((a.length()+Goc.length())==ChieuDaiChuoi && b==13)
 			{
@@ -716,7 +723,7 @@ int CapNhatSo(int SoGoc, int ChieuDaiChuoi, int DiemX, int DiemY, int MauChu, in
 			{
 				DieuKienKiTu=1;
 				ShowCur(0);
-				break;
+				return m;
 			} 
 			else if(b==BackSpace && s.length()==0 && Goc.length()>0)
 			{
@@ -770,7 +777,7 @@ int CapNhatSo(int SoGoc, int ChieuDaiChuoi, int DiemX, int DiemY, int MauChu, in
 			{
 				DieuKienKiTu=1;
 				ShowCur(0);
-				break;
+				return m;
 			} 
 			else if((s.length()+Goc.length())==ChieuDaiChuoi && b==13)
 			{
