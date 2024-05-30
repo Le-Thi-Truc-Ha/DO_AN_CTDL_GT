@@ -24,10 +24,6 @@ void NhapDSDS(List &DSDS, int MauChu){
 	} 
 	else
 	{
-		if(DSDS.n>0)
-		{
-			QuickSortTen(DSDS,0,DSDS.n-1);
-		}
 		TinhSoTrangDauSach(DSDS);
 		SoTrangDauSach=TongTrangDauSach;
 		VeTrangDauSach();
@@ -44,6 +40,10 @@ void NhapDSDS(List &DSDS, int MauChu){
 			XoaHetDSDS();
 			XuatDauSach(DSDS,NOI_DUNG,TongTrangDauSach*ChieuRongDauSach-ChieuRongDauSach,DSDS.n);
 			DiemYDauSach=((DSDS.n-1)%ChieuRongDauSach)+1;
+		}
+		if(DSDS.n>0)
+		{
+			QuickSortTen(DSDS,0,DSDS.n-1);
 		}
 		while(DSDS.n != MAXLIST)
 		{
